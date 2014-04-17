@@ -1,0 +1,38 @@
+{
+  "name": "fw",
+  "version": "0.1.0-rc.0",
+  "description": "Tiny library for asynchronous control-flow in JavaScript environments",
+  "license": "MIT",
+  "author": {
+    "name": "Tomas Aparicio"
+  },
+  "main": "./fw.js",
+  "homepage": "https://github.com/h2non/fw",
+  "bugs": "https://github.com/h2non/fw/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/h2non/fw.git"
+  },
+  "keywords": [
+    "async",
+    "asynchronous",
+    "control",
+    "flow",
+    "parallel",
+    "series"
+  ],
+  "ignore": [
+    "**/.*",
+    ".*",
+    "*.md",
+    "src",
+    "lib",
+    "test",
+    "Makefile",
+    ".editorconfig",
+    ".gitignore",
+    ".travis.yml",
+    ".npmignore",
+    "package.json"
+  ]
+}
