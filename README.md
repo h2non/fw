@@ -17,14 +17,14 @@ It runs in node and browsers and is dependency-free
 
 #### Node.js
 
-```
+```bash
 $ npm install fw --save
 ```
 
 #### Browser
 
 Via Bower package manager
-```
+```bash
 $ bower install fw
 ```
 
@@ -38,3 +38,45 @@ Or loading the script remotely (just for testing or development)
 ### parallel
 
 ### series
+
+## Contributing
+
+Wanna help? Cool! It will be really apreciated :)
+
+You must add new test cases for any new feature or refactor you do,
+always following the same design/code patterns that already exist
+
+### Development
+
+Only [node.js](http://nodejs.org) is required for development
+
+Clone/fork this repository
+```
+$ git clone https://github.com/h2non/fw.git && cd fw
+```
+
+Install dependencies
+```
+$ npm install
+```
+
+Compile code
+```
+$ make compile
+```
+
+Run tests
+```
+$ make test
+```
+
+Publish a new version
+```
+$ make publish
+```
+
+## License
+
+Copyright (c) 2014 Tomas Aparicio
+
+Released under the MIT license
