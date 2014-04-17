@@ -80,3 +80,7 @@ $ make publish
 Copyright (c) 2014 Tomas Aparicio
 
 Released under the MIT license
+
+[travis]: http://travis-ci.org/h2non/fw
+[gemnasium]: https://gemnasium.com/h2non/fw
+[npm]: http://npmjs.org/package/fw
