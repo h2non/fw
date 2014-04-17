@@ -1,6 +1,6 @@
 # fw [![Build Status](https://secure.travis-ci.org/h2non/fw.png?branch=master)][travis] [![NPM version](https://badge.fury.io/js/fw.png)][npm]
 
-> Work in progress!
+> **Work in progress!**
 
 ## About
 
