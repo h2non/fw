@@ -4,7 +4,7 @@
 
 ## About
 
-**fw** is a tiny library inspired in `async.js` which
+**fw** is a tiny library inspired by `async.js` which
 simplifies asynchronous control-flow management in JavaScript environments
 
 It was designed to be minimalist, easy-to-use and easy-to-embed as a
