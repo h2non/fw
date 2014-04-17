@@ -1,0 +1,42 @@
+{
+  "name": "fw",
+  "version": "0.1.0",
+  "description": "Ultra minimalist library for asynchronous control-flow",
+  "homepage": "http://github.com/h2non/fw",
+  "bugs": "https://github.com/h2non/fw/issues",
+  "author": {
+    "name": "Tomas Aparicio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/h2non/fw.git"
+  },
+  "licenses": "MIT",
+  "main": "lib/fw",
+  "directories": {
+    "lib": "./lib"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "async",
+    "asynchronous",
+    "control",
+    "flow",
+    "parallel",
+    "series"
+  ],
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "semver": "~2.2.1",
+    "mocha": "~1.18.2",
+    "LiveScript": "~1.2.0",
+    "browserify": "^3.43.0",
+    "uglify-js": "^2.4.13",
+    "wisp": "^0.9.0-beta3"
+  }
+}
