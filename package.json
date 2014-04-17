@@ -1,7 +1,7 @@
 {
   "name": "fw",
   "version": "0.1.0",
-  "description": "Ultra minimalist library for asynchronous control-flow",
+  "description": "Minimalist embeddable library for asynchronous control-flow",
   "homepage": "http://github.com/h2non/fw",
   "bugs": "https://github.com/h2non/fw/issues",
   "author": {
