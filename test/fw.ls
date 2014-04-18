@@ -45,3 +45,17 @@ suite 'parallel', ->
     ], (err) ->
       expect err .to.be.equal 'error'
       done!
+
+suite 'whilst', ->
+
+  test 'basic', (done) ->
+    count = 0
+    fw.whilst(
+      (-> count < 5),
+      ((next) !-> count++; delay next),
+      ((err) !->
+        expect err .to.be.undefined
+        expect count .to.be.equal 5
+        done!
+      )
+    )

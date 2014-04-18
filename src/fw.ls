@@ -1,5 +1,11 @@
 module.exports = fw =
 
+  whilst: (x, y, z) ->
+    if x! then
+      y (e) -> if e then z e else fw.whilst x, y, z
+    else
+      z!
+
   series: (arr, cb) !->
     arr.push cb ?= ->
     do next = (err, result) !->
