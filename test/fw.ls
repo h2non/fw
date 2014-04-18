@@ -2,31 +2,46 @@ fw = require '../'
 { expect } = require 'chai'
 
 delay = (f) ->
-  set-timeout f, Math.random! * 100 * Math.random! * 10
+  set-timeout f, Math.random! * 100
 
 suite 'series', ->
 
-  fw.series [
-    (next, err, result) -> delay -> console.log ['a', next, err, result]; next(err, 1)
-    (next, err, result) -> delay -> console.log ['b', next, err, result]; next(err, 2)
-    (next, err, result) -> delay -> console.log ['c', next, err, result]; next(err, 3)
-    (next, err, result) -> console.log ['d', next, err, result]; next(err, 4)
-  ], (next, err, result) ->
-    return console.log 'series complete with error', next, err, result if err
-    console.log "series complete.", next, err, result
+  test 'basic', (done) ->
+    fw.series [
+      (next) -> delay -> next null, 1
+      (next, err, result) -> delay -> next null, result + 1
+      (next, err, result) -> next err, result * 2
+    ], (err, result) ->
+      expect err .to.be.null
+      expect result .to.be.equal 4
+      done!
 
-  test 'basic', ->
-    expect fw.series .to.be.a 'function'
+  test 'error', (done) ->
+    fw.series [
+      (next, err, result) -> delay -> next err, 1
+      (next, err, result) -> delay -> next 'error', result
+      (next, err, result) -> next err, result
+    ], (err, result) ->
+      expect err .to.be.equal 'error'
+      expect result .be.equal 1
+      done!
 
 suite 'parallel', ->
 
-  fw.parallel [
-    (next) -> delay -> console.log ['e', next]; next!
-    (next) -> delay -> console.log ['f', next]; next!
-    (next) -> console.log ['g', next]; next!
-  ],(err) ->
-    return console.log ['parallel complete with error', err] if err
-    console.log ["parallel complete.", err]
+  test 'basic', (done) ->
+    fw.parallel [
+      (next) -> delay -> next!
+      (next) -> delay -> next!
+      (next) -> next!
+    ], (err) ->
+      expect err .to.be.undefined
+      done!
 
-  test 'parallel', ->
-    expect fw.parallel .to.be.a 'function'
+  test 'error', (done) ->
+    fw.parallel [
+      (next) -> delay -> next!
+      (next) -> delay -> next 'error'
+      (next) -> next!
+    ], (err) ->
+      expect err .to.be.equal 'error'
+      done!
