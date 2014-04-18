@@ -12,8 +12,8 @@ suite 'series', ->
     (next, err, result) -> delay -> console.log ['c', next, err, result]; next(err, 3)
     (next, err, result) -> console.log ['d', next, err, result]; next(err, 4)
   ], (next, err, result) ->
-    return console.log ['series complete with error', next, err, result] if err
-    console.log ["series complete.", next, err, result]
+    return console.log 'series complete with error', next, err, result if err
+    console.log "series complete.", next, err, result
 
   test 'basic', ->
     expect fw.series .to.be.a 'function'
