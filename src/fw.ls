@@ -2,6 +2,7 @@ module.exports = fw =
 
   series: (arr, cb) !->
     arr.push cb ?= ->
+    console.log cb
     do next = (err, result) !->
       arr := [arr[arr.length - 1]] if err
       arr.shift! next, err, result
