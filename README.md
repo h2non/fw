@@ -9,7 +9,7 @@
 ## About
 
 **fw** is a tiny library (<200 SLOC) which helps with asynchronous
-control-flow management in JavaScript environment
+control-flow management in JavaScript environments
 
 It was designed to be easy-to-use and small, in order to embed it as a
 part of other libraries or frameworks
