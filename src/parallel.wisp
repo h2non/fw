@@ -22,3 +22,9 @@
       (each arr (fn [cur]
         (cond (fn? cur)
           (cur (once next))))))))
+
+(defn ^void each
+  "Applies the function iterator to each item in array in parallel"
+  [arr lambda cb]
+  (let [stack []]
+    (each arr (fn []))))
