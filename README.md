@@ -11,7 +11,7 @@
 **fw** is a tiny library (<200 SLOC) which helps with **asynchronous
 control-flow management** in JavaScript environments
 
-It exploits the **functional-style programming** based on high-order functions and other common patterns.
+It exploits **functional-style programming** using on higher-order functions and other common patterns.
 You could use it in conjunction with [hu][hu], for a better approach
 
 ## Features
