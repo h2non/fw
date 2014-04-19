@@ -4,6 +4,7 @@ src
 .gitignore
 .travis.yml
 .editorconfig
+.npmignore
 Makefile
 /fw.js
 /fw.min.js
