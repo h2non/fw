@@ -8,7 +8,7 @@
 
 ## About
 
-**fw** is a tiny library (<200 SLOC) which helps with **asynchronous
+**fw** is a tiny library which helps with **asynchronous
 control-flow management** in JavaScript environments
 
 It exploits **functional-style programming** using higher-order functions and other common patterns.
