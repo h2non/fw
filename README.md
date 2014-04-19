@@ -1,16 +1,25 @@
-# fw [![Build Status](https://secure.travis-ci.org/h2non/fw.png?branch=master)][travis] [![NPM version](https://badge.fury.io/js/fw.png)][npm]
+# fw [![Build Status](https://travis-ci.org/h2non/fw.svg?branch=master)][travis] [![Dependency Status](https://gemnasium.com/h2non/fw.svg)][gemnasium] [![NPM version](https://badge.fury.io/js/fw.svg)][npm]
 
 > **Work in progress!**
+
+<table>
+<tr>
+<td><b>Stage</b></td><td>beta</td>
+</tr>
+</table>
 
 ## About
 
 **fw** is a tiny library inspired by `async.js` which
-simplifies asynchronous control-flow management in JavaScript environments
+simplifies asynchronous control-flow management in JavaScript environment
 
-It was designed to be minimalist, easy-to-use and easy-to-embed as a
-part of other libraries or frameworks.
+It was designed to be easy-to-use and minimal, in order to embed it as a
+part of other libraries or frameworks
 
-It runs in node and browsers and it's dependency-free
+It runs in node and browsers and it's full dependency-free
+
+fw exploit the functional-style programming based on high-order functions and common patterns.
+You can use it in conjunction with [hu][hu] for a better approach
 
 ## Installation
 
@@ -32,17 +41,32 @@ Or loading the script remotely (just for testing or development)
 <script src="//rawgithub.com/h2non/fw/master/fw.js"></script>
 ```
 
+## Environments
+
+It works properly in any ES5 compliant engines
+
+- Node.js
+- Chrome >= 5
+- Firefox >= 3
+- Safari >= 5
+- Opera >= 12
+- IE >= 9
+
 ## API
 
-### parallel
+### parallel(arr, callback)
 
-### series
+### series(arr, callback)
 
-### map
+### whilst(test, fn, callback)
 
-### each
 
-### eachSeries
+
+### map(arr, iterator, callback)
+
+### each(arr, iterator, callback)
+
+### eachSeries(arr, iterator, callback)
 
 ## Contributing
 
@@ -82,9 +106,9 @@ $ make publish
 
 ## License
 
-Copyright (c) 2014 Tomas Aparicio
-
-Released under the MIT license
+[MIT](http://opensource.org/licenses/MIT) © Tomas Aparicio
 
 [travis]: http://travis-ci.org/h2non/fw
 [npm]: http://npmjs.org/package/fw
+[gemnasium]: https://gemnasium.com/h2non/fw
+[hu]: https://github.com/h2non/hu

@@ -1,6 +1,9 @@
 test
-*.ls
+src
+*.wisp
 .gitignore
 .travis.yml
 .editorconfig
 Makefile
+/fw.js
+/fw.min.js

@@ -15,7 +15,12 @@ define release
 		j.version = \"$$NEXT_VERSION\";\
 		var s = JSON.stringify(j, null, 2);\
 		require('fs').writeFileSync('./package.json', s);" && \
-	git commit -m "release $$NEXT_VERSION" -- package.json && \
+	node -e "\
+		var j = require('./bower.json');\
+		j.version = \"$$NEXT_VERSION\";\
+		var s = JSON.stringify(j, null, 2);\
+		require('fs').writeFileSync('./bower.json', s);" && \
+	git commit -am "release $$NEXT_VERSION" && \
 	git tag "$$NEXT_VERSION" -m "Version $$NEXT_VERSION"
 endef
 
@@ -31,11 +36,18 @@ clean:
 	rm -rf lib
 	rm -f *.js
 
+cleanbrowser:
+	rm -f *.js
+
 compile: clean mkdir
-	cat src/fw.ls | $(LS) -c -s -b > lib/fw.js
+	cat src/macros.wisp src/fw.wisp | $(WISP) --no-map > lib/fw.js
+	cat src/macros.wisp src/series.wisp | $(WISP) --no-map > lib/series.js
+	cat src/macros.wisp src/parallel.wisp | $(WISP) --no-map > lib/parallel.js
+	cat src/macros.wisp src/whilst.wisp | $(WISP) --no-map > lib/whilst.js
+	cat src/macros.wisp src/util.wisp | $(WISP) --no-map > lib/util.js
 
 mocha:
-	$(MOCHA) --timeout 10000 --reporter spec --ui tdd --compilers ls:$(LS_MODULE)
+	$(MOCHA) --timeout 2000 --reporter spec --ui tdd --compilers wisp:$(WISP_MODULE)
 
 banner:
 	@echo $(BANNER) > fw.js
