@@ -20,7 +20,7 @@ You could use it in conjunction with [hu][hu], for a better approach
 - Collections transformers and mapping (each, map...)
 - Runs in node and browsers
 - Simple and easy-to-use API
-- Tiny (<200 SLOC)
+- Tiny (~200 SLOC)
 - Dependency-free
 - Designed to be embedded in other libraries or applications
 
