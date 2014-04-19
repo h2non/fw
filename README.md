@@ -96,6 +96,8 @@ fw.series([
 
 Run the tasks array of functions in parallel, without waiting until the previous function has completed
 
+Once the `tasks` have completed, the results are passed to the final `callback` as an array
+
 ##### arguments
 
 - **tasks** - An array containing functions to run. Each function is passed a `callback(err, result)`
