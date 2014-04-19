@@ -54,19 +54,45 @@ It works properly in any ES5 compliant engines
 
 ## API
 
-### parallel(arr, callback)
+```js
+var fw = require('fw')
+```
 
-### series(arr, callback)
+### series(tasks, callback)
+
+Run the functions in the array in series, each one running
+once the previous function has completed
+
+If any functions in the series pass an error to its callback,
+no more functions are run and callback is immediately
+called with the value of the error
+
+```js
+fw.series([
+  function (next) {
+    // do some stuff ...
+    next(null, 1)
+  },
+  function (next, result) {
+    // do some more stuff ...
+    next(null, 2)
+  }
+], function (err, results) {
+  // results is now equal to [1, 2]
+});
+```
+
+### parallel(tasks, callback)
 
 ### whilst(test, fn, callback)
 
-
-
+<!--
 ### map(arr, iterator, callback)
 
 ### each(arr, iterator, callback)
 
 ### eachSeries(arr, iterator, callback)
+-->
 
 ## Contributing
 

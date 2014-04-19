@@ -1,5 +1,5 @@
 (ns fw.lib.parallel
-  (:require [fw.lib.util :refer [last filter-empty each]]))
+  (:require [fw.lib.util :refer [filter-empty each]]))
 
 (defn ^:private iterator
   [lambda len]
@@ -9,14 +9,15 @@
       (fn [err result]
         (.push results result)
         (cond err (set! error err))
-        (cond (? (.-length results) len)
+        (cond (? (l? results) len)
           (lambda error (filter-empty results)))))))
 
 (defn ^void parallel
   "Run the tasks array of functions in parallel"
   [arr lambda]
   (a? arr
-    (let [len (.-length arr)
+    (let [arr (c-> arr)
+          len (l? arr)
           next (iterator lambda len)]
       (each arr (fn [cur]
         (cond cur (cur next)))))))

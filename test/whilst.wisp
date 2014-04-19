@@ -23,13 +23,13 @@
     (test :error
       (fn [done]
         (let [count 0]
-            (whilst
-              (fn [next] (< count 5))
-              (fn [next]
-                (set! count (+ count 1))
-                (if (identical? count 3)
-                  (delay (next :error))
-                  (delay next)))
-              (fn [err]
-                (.to.be.equal (expect err) :error)
-                (.to.be.equal (expect count) 3) (done))))))))
+          (whilst
+            (fn [next] (< count 5))
+            (fn [next]
+              (set! count (+ count 1))
+              (if (identical? count 3)
+                (delay (next :error))
+                (delay next)))
+            (fn [err]
+              (.to.be.equal (expect err) :error)
+              (.to.be.equal (expect count) 3) (done))))))))

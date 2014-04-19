@@ -14,17 +14,17 @@
         (series
           [ (fn [next] (delay (fn [] (next))))
             (fn [next] (delay (fn [] (next nil 1))))
-            (fn [next _ result] (delay (fn [] (next nil (+ result 1)))))
-            (fn [next _ result] (delay (fn [] (next nil (* result 2))))) ]
+            (fn [next result] (delay (fn [] (next nil (+ result 1)))))
+            (fn [next result] (delay (fn [] (next nil (* result 2))))) ]
           (fn [err result]
             (.to.be.equal (expect err) nil)
-            (.to.be.equal (expect result) 4) (done)))))
+            (.to.be.deep.equal (expect result) [1 2 4]) (done)))))
     (test :error
       (fn [done]
         (series
           [ (fn [next] (delay (fn [] (next nil 1))))
-            (fn [next _ result] (delay (fn [] (next :error result))))
+            (fn [next result] (delay (fn [] (next :error result))))
             (fn [next] (delay (fn [] (next 2)))) ]
           (fn [err result]
             (.to.be.equal (expect err) :error)
-            (.to.be.equal (expect result) 1) (done)))))))
+            (.to.be.deep.equal (expect result) [1 1]) (done)))))))
