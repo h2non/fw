@@ -87,7 +87,7 @@ fw.series([
     }, 100)
   }
 ], function (err, results) {
-  console.log(err) // → null
+  console.log(err) // → undefined
   console.log(results) // → [1, 2]
 })
 ```
@@ -118,7 +118,7 @@ fw.parallel([
     }, 150)
   }
 ], function (err, results) {
-  console.log(err) // → null
+  console.log(err) // → undefined
   console.log(results) // → [1, 2]
 })
 ```
