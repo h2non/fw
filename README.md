@@ -9,14 +9,14 @@
 ## About
 
 **fw** is a tiny library (<200 SLOC) which helps with asynchronous
-control-flow management in JavaScript environments
+**control-flow management** in JavaScript environments
 
 It was designed to be easy-to-use and small as possible, in order to embed it as a
 part of other libraries or frameworks
 
-It runs in node and browsers and it's full dependency-free
+It runs in **node** and **browsers** and it's full **dependency-free**.
 
-It exploits the functional-style programming based on high-order functions and other common patterns.
+It exploits the **functional-style programming** based on high-order functions and other common patterns.
 You can use it in conjunction with [hu][hu], for a better approach
 
 ## Installation
