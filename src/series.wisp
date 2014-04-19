@@ -24,8 +24,11 @@
   "Applies the function iterator to each item
   in array in parallel"
   [arr lambda cb]
-  (let [stack (.map arr
-                (fn [item]
-                  (fn [done]
-                    (lambda item done))))]
-    (series stack cb)))
+  (a? arr (do
+    (let [stack (.map arr
+                  (fn [item]
+                    (fn [done]
+                      (lambda item done))))]
+    (series stack cb)))))
+
+(def ^void map-series each-series)
