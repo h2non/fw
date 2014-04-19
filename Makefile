@@ -34,7 +34,6 @@ mkdir:
 
 clean:
 	rm -rf lib
-	rm -f *.js
 
 cleanbrowser:
 	rm -f *.js
