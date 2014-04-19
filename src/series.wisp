@@ -19,3 +19,13 @@
     (let [arr (c-> arr)]
       (.push arr (if lambda lambda (fn [])))
       ((iterator arr)))))
+
+(defn ^void each-series
+  "Applies the function iterator to each item
+  in array in parallel"
+  [arr lambda cb]
+  (let [stack (.map arr
+                (fn [item]
+                  (fn [done]
+                    (lambda item done))))]
+    (series stack cb)))

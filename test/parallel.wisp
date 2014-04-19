@@ -1,7 +1,7 @@
 (ns fw.test.parallel
   (:require
     [chai :refer [expect]]
-    [fw.lib.parallel :refer [parallel]]))
+    [fw.lib.parallel :refer [parallel each]]))
 
 (defn ^:private delay
   [lambda]
@@ -60,3 +60,27 @@
             (.to.include (expect result) 1)
             (.to.include (expect result) 2) (done)))))))
 
+(suite :each
+  (fn []
+    (test :basic
+      (fn [done]
+        (each
+          [1 2 3]
+          (fn [item next] (delay (fn [] (next nil (* item 2)))))
+          (fn [err result]
+            (.to.be.equal (expect err) nil)
+            (.to.be.an (expect result) :array)
+            (.to.have.length (expect result) 3)
+            (.to.include (expect result) 4)
+            (.to.include (expect result) 6) (done)))))
+    (test :error
+      (fn [done]
+        (each
+          [1 2 3]
+          (fn [item next] (delay (fn [] (next :error (* item 2)))))
+          (fn [err result]
+            (.to.be.equal (expect err) :error)
+            (.to.be.an (expect result) :array)
+            (.to.have.length (expect result) 3)
+            (.to.include (expect result) 4)
+            (.to.include (expect result) 6) (done)))))))

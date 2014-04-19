@@ -16,7 +16,8 @@ You could use it in conjunction with [hu][hu], for a better approach
 
 ## Features
 
-- Common control-flow management (series, parallel...)
+- Support series or parallel control-flow modes
+- Collections transformers and mapping (each, map...)
 - Runs in node and browsers
 - Simple and easy-to-use API
 - Tiny (<200 SLOC)
@@ -62,8 +63,8 @@ var fw = require('fw')
 
 ### series(tasks, callback)
 
-Run the functions in the array in series, each one running
-once the previous function has completed
+Run the functions in the array in series (sequentially).
+Each function will be executed only if its previous function has completed
 
 If any functions in the series pass an error to its callback,
 no more functions are run and callback is immediately
@@ -153,13 +154,50 @@ fw.whilst(
 )
 ```
 
-<!--
-### map(arr, iterator, callback)
-
 ### each(arr, iterator, callback)
+**Alias**: `map`
+
+Applies the function iterator to each item in arr, in parallel.
+The iterator is called with an item from the list, and a callback for when it has finished
+
+Note that since this function applies iterator to each item in parallel,
+there is no guarantee that the iterator functions will complete in order
+
+##### arguments
+
+- **arr** - An array to iterate over
+- **iterator(item, callback)** - A function to apply to each item in arr.
+The iterator is passed a callback(err) which must be called once it has completed.
+If no error has occured, the callback should be run without arguments or with an explicit null argument
+- **callback(err)** - A callback which is called when all iterator functions have finished, or an error occurs
+
+```js
+var fs = require('fs')
+var files = ['package.json', 'bower.json']
+
+fw.each(files, fs.readFile, function (err, results) {
+  console.log(err) // → undefined
+  console.log(results) // → [Buffer, Buffer]
+})
+```
 
 ### eachSeries(arr, iterator, callback)
--->
+**Alias**: `mapSeries`
+
+The same as `each()`, but only iterator is applied to
+each item in the array in series
+
+The next iterator is only called once the current one has completed (sequentially)
+
+```js
+var fs = require('fs')
+var files = ['package.json', 'bower.json']
+
+fw.eachSeries(files, fs.readFile, function (err, results) {
+  console.log(err) // → undefined
+  console.log(results) // → [Buffer, Buffer]
+})
+```
 
 ## Contributing
 
