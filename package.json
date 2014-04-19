@@ -1,6 +1,6 @@
 {
   "name": "fw",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Tiny library for asynchronous control-flow in JavaScript",
   "license": "MIT",
   "repository": "h2non/fw",
