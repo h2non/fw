@@ -1,5 +1,8 @@
 (ns fw.lib.util)
 
+(defn ^boolean fn?
+  [x] (? (typeof x) :function))
+
 (defn ^mixed last
   "Last item of the list"
   [arr]
@@ -10,12 +13,6 @@
   [arr]
   (? (l? arr) 1))
 
-(defn ^void each
-  "Iterate an array passing a callback for each item"
-  [arr lambda]
-  (a? arr
-    (.for-each arr lambda)))
-
 (defn ^array filter-empty
   "Remove empty values from an array"
   [arr]
@@ -25,3 +22,14 @@
         (not (or
           (? x nil)
           (? x null)))))))
+
+(defn ^fn once
+  "Creates a function that is restricted
+  to execute function once time"
+  [lambda]
+  (let [call false]
+    (fn [& args]
+      (cond (not call)
+        (do
+          (set! call true)
+          (apply lambda args))))))

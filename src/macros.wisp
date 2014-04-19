@@ -25,11 +25,7 @@
   [x]
   `(? (l? ~x) 0))
 
-(defmacro once
-  "Creates a function that is restricted
-  to execute function once time"
-  [lambda]
-  `(let [call false]
-     (fn [& args]
-       (cond (not call)
-         (apply ~lambda args)))))
+(defmacro each
+  "Iterate an array passing a callback for each item"
+  [arr lambda]
+  `(.for-each ~arr ~lambda))

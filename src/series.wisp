@@ -1,5 +1,5 @@
 (ns fw.lib.series
-  (:require [fw.lib.util :refer [last uniq? filter-empty]]))
+  (:require [fw.lib.util :refer [fn? once last uniq? filter-empty]]))
 
 (defn ^:private iterator
   [arr]
@@ -9,8 +9,8 @@
       (if (or err (uniq? arr))
         ((last arr) err (filter-empty results))
         (let [cur (.shift arr)]
-          (cond cur
-            (cur next result)))))))
+          (cond (fn? cur)
+            (cur (once next) result)))))))
 
 (defn ^void series
   "Run the tasks array of functions in serie"

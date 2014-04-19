@@ -20,6 +20,17 @@
             (fn [err]
               (.to.be.equal (expect err) nil)
               (.to.be.equal (expect count) 5) (done))))))
+    (test :multicall
+      (fn [done]
+        (let [count 0]
+          (whilst
+            (fn [next] (< count 5))
+            (fn [next]
+              (set! count (+ count 1))
+              (delay next))
+            (fn [err]
+              (.to.be.equal (expect err) nil)
+              (.to.be.equal (expect count) 5) (done))))))
     (test :error
       (fn [done]
         (let [count 0]

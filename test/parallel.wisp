@@ -33,6 +33,19 @@
             (.to.have.length (expect result) 2)
             (.to.include (expect result) 1)
             (.to.include (expect result) 2) (done)))))
+    (test :multicall
+      (fn [done]
+        (parallel
+          [ (fn [next] (delay (fn [] (next nil 1))))
+            (fn [next] (delay (fn [] (next nil) (next :error))))
+            (fn [next] (delay (fn [] (next nil 2) (next :fail))))
+            (fn [next] (delay (fn [] (next nil)))) ]
+          (fn [err result]
+            (.to.be.equal (expect err) nil)
+            (.to.be.an (expect result) :array)
+            (.to.have.length (expect result) 2)
+            (.to.include (expect result) 1)
+            (.to.include (expect result) 2) (done)))))
     (test :error
       (fn [done]
         (parallel

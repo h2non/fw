@@ -67,7 +67,7 @@ release:
 release-minor:
 	@$(call release,minor)
 
-publish: release
+publish: browser release
 	git push --tags origin HEAD:master
 	npm publish
 

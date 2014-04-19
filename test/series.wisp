@@ -19,6 +19,15 @@
           (fn [err result]
             (.to.be.equal (expect err) nil)
             (.to.be.deep.equal (expect result) [1 2 4]) (done)))))
+    (test :multicall
+      (fn [done]
+        (series
+          [ (fn [next] (delay (fn [] (next))))
+            (fn [next] (delay (fn [] (next nil 1) (next :error))))
+            (fn [next result] (delay (fn [] (next nil (* result 2))))) ]
+          (fn [err result]
+            (.to.be.equal (expect err) nil)
+            (.to.be.deep.equal (expect result) [1 2]) (done)))))
     (test :error
       (fn [done]
         (series

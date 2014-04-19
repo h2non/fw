@@ -86,6 +86,9 @@ fw.series([
 
 ### whilst(test, fn, callback)
 
+Repeatedly call a function, while test returns true.
+Calls callback when stopped or an error occurs
+
 <!--
 ### map(arr, iterator, callback)
 
