@@ -45,7 +45,7 @@ Or loading the script remotely (just for testing or development)
 
 ## Environments
 
-It works properly in any ES5 compliant engines
+It works properly in any ES5 compliant engine
 
 - Node.js
 - Chrome >= 5
