@@ -20,7 +20,7 @@ You can use it in conjunction with [hu][hu], for a better approach
 - Runs in node and browsers
 - Simple and easy-to-use API
 - Tiny (<200 SLOC)
-- Full dependency-free
+- Dependency-free
 - Designed to be embedded in other libraries or applications
 
 ## Installation
