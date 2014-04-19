@@ -29,9 +29,9 @@
   [arr lambda cb]
   (a? arr (do
     (let [stack (.map arr
-                (fn [item]
-                  (fn [done]
-                    (lambda item done))))]
+                  (fn [item]
+                    (fn [done]
+                      (lambda item done))))]
     (parallel stack cb)))))
 
 (def ^void map each)
