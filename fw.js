@@ -59,7 +59,7 @@ var iterator = function iterator(lambda, len) {
         return function (err, result) {
             resultsø1.push(result);
             err ? errorø1 = err : void 0;
-            return resultsø1.length === len ? lambda(errorø1, filterEmpty(resultsø1)) : void 0;
+            return resultsø1.length === len ? isFn(lambda) ? lambda(errorø1, filterEmpty(resultsø1)) : void 0 : void 0;
         };
     }.call(this);
 };

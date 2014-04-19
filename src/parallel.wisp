@@ -9,7 +9,8 @@
       (.push results result)
       (cond err (set! error err))
       (cond (? (l? results) len)
-        (lambda error (filter-empty results))))))
+        (cond (fn? lambda)
+          (lambda error (filter-empty results)))))))
 
 (defn ^void parallel
   "Run the tasks array of functions in parallel"

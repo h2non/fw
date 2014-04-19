@@ -10,16 +10,16 @@
 
 ## About
 
-**fw** is a tiny library inspired by `async.js` which
-simplifies asynchronous control-flow management in JavaScript environment
+**fw** is a tiny library (<200 SLOC) which helps with asynchronous
+control-flow management in JavaScript environment
 
-It was designed to be easy-to-use and minimal, in order to embed it as a
+It was designed to be easy-to-use and small, in order to embed it as a
 part of other libraries or frameworks
 
 It runs in node and browsers and it's full dependency-free
 
-fw exploit the functional-style programming based on high-order functions and common patterns.
-You can use it in conjunction with [hu][hu] for a better approach
+fw exploit functional-style programming based on high-order functions and other common patterns.
+You can use it in conjunction with [hu][hu], for a better approach
 
 ## Installation
 
@@ -67,27 +67,87 @@ If any functions in the series pass an error to its callback,
 no more functions are run and callback is immediately
 called with the value of the error
 
+##### Arguments
+
+- **tasks** - An array containing functions to run. Each function is passed a `callback(err, result)`
+- **callback** - Optional callback to run once all the functions have completed.
+This function gets an array of results containing all the result arguments passed
+to the task callbacks. `undefined` or `null` values will be omitted from results
+
 ```js
 fw.series([
   function (next) {
-    // do some stuff ...
-    next(null, 1)
+    setTimeout(function () {
+      next(null, 1)
+    }, 100)
   },
   function (next, result) {
-    // do some more stuff ...
-    next(null, 2)
+    setTimeout(function () {
+      next(null, 2)
+    }, 100)
   }
 ], function (err, results) {
-  // results is now equal to [1, 2]
-});
+  console.log(err) // → null
+  console.log(results) // → [1, 2]
+})
 ```
 
 ### parallel(tasks, callback)
+
+Run the tasks array of functions in parallel, without waiting until the previous function has completed
+
+##### arguments
+
+- **tasks** - An array containing functions to run. Each function is passed a `callback(err, result)`
+- **callback** - Optional callback to run once all the functions have completed.
+This function gets an array of results containing all the result arguments passed
+to the task callbacks. `undefined` or `null` values will be omitted from results
+
+```js
+fw.parallel([
+  function (done) {
+    setTimeout(function () {
+      done(null, 1)
+    }, 100)
+  },
+  function (done, result) {
+    setTimeout(function () {
+      done(null, 2)
+    }, 150)
+  }
+], function (err, results) {
+  console.log(err) // → null
+  console.log(results) // → [1, 2]
+})
+```
 
 ### whilst(test, fn, callback)
 
 Repeatedly call a function, while test returns true.
 Calls callback when stopped or an error occurs
+
+##### arguments
+
+- **test()** - synchronous truth test to perform before each execution of fn.
+- **fn(callback)** - A function which is called each time test passes. The function is passed a `callback(err)`, which must be called once it has completed with an optional err argument
+- **callback(err)** - A callback which is called after the test fails and repeated execution of `fn` has stopped
+
+```js
+var count = 0
+
+fw.whilst(
+  function () {
+    return count < 3
+  },
+  function (callback) {
+    count++
+    setTimeout(callback, 1000)
+  },
+  function (err) {
+    // 3 seconds have passed
+  }
+)
+```
 
 <!--
 ### map(arr, iterator, callback)
@@ -128,9 +188,9 @@ Run tests
 $ make test
 ```
 
-Publish a new version
+Generate browser sources
 ```
-$ make publish
+$ make browser
 ```
 
 ## License
