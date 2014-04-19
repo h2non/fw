@@ -1,4 +1,4 @@
-# fw [![Build Status](https://travis-ci.org/h2non/fw.svg?branch=master)][travis] [![Dependency Status](https://gemnasium.com/h2non/fw.svg)][gemnasium] [![NPM version](https://badge.fury.io/js/fw.svg)][npm]
+# fw [![Build Status](https://travis-ci.org/h2non/fw.svg?branch=master)][travis] [![NPM version](https://badge.fury.io/js/fw.svg)][npm]
 
 <table>
 <tr>
@@ -203,5 +203,4 @@ $ make browser
 
 [travis]: http://travis-ci.org/h2non/fw
 [npm]: http://npmjs.org/package/fw
-[gemnasium]: https://gemnasium.com/h2non/fw
 [hu]: https://github.com/h2non/hu
