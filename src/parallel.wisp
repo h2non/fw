@@ -24,8 +24,8 @@
           (cur (once next))))))))
 
 (defn ^void each
-  "Applies the function iterator to each item
-  in array in parallel"
+  "Applies the function iterator to each
+  item in array in parallel"
   [arr lambda cb]
   (a? arr (do
     (let [stack (.map arr

@@ -21,8 +21,8 @@
       ((iterator arr)))))
 
 (defn ^void each-series
-  "Applies the function iterator to each item
-  in array in parallel"
+  "Applies the function iterator to each
+  item in array in serie"
   [arr lambda cb]
   (a? arr (do
     (let [stack (.map arr
