@@ -22,7 +22,7 @@ You could use it in conjunction with [hu][hu], for a better approach
 - Simple and easy-to-use API
 - Tiny (~200 SLOC)
 - Dependency-free
-- Designed to be embedded in other libraries or applications
+- Designed to be embedded in libraries or applications
 
 ## Installation
 
@@ -86,7 +86,7 @@ fw.series([
   },
   function (next, result) {
     setTimeout(function () {
-      next(null, 2)
+      next(null, result + 1)
     }, 100)
   }
 ], function (err, results) {
@@ -115,7 +115,7 @@ fw.parallel([
       done(null, 1)
     }, 100)
   },
-  function (done, result) {
+  function (done) {
     setTimeout(function () {
       done(null, 2)
     }, 150)
@@ -201,7 +201,7 @@ fw.eachSeries(files, fs.readFile, function (err, results) {
 
 ## Contributing
 
-Wanna help? Cool! It will be really apreciated :)
+Wanna help? Great! It will be really apreciated :)
 
 You must add new test cases for any new feature or refactor you do,
 always following the same design/code patterns that already exist
