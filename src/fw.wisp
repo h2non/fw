@@ -5,7 +5,7 @@
     [fw.lib.whilst :refer [whilst]]))
 
 (def ^:private fw exports)
-(set! (.-VERSION fw) :0.1.0)
+(set! (.-VERSION fw) :0.1.2)
 (set! (.-series fw) series)
 (set! (.-each-series fw) each-series)
 (set! (.-map-series fw) map-series)

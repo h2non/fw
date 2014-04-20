@@ -1,5 +1,3 @@
-LS = ./node_modules/.bin/lsc
-LS_MODULE = ./node_modules/LiveScript/
 MOCHA = ./node_modules/.bin/mocha
 BROWSERIFY = node ./node_modules/browserify/bin/cmd.js
 WISP = ./node_modules/wisp/bin/wisp.js
