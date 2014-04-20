@@ -17,7 +17,7 @@ You could use it in conjunction with [hu][hu], for a better approach
 ## Features
 
 - Support series or parallel control-flow modes
-- Collections transformers and mapping (each, map...)
+- Collections iterators (each, map...)
 - Runs in node and browsers
 - Simple and easy-to-use API
 - Tiny (~200 SLOC)

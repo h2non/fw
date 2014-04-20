@@ -5,7 +5,7 @@ BROWSERIFY = node ./node_modules/browserify/bin/cmd.js
 WISP = ./node_modules/wisp/bin/wisp.js
 WISP_MODULE = ./node_modules/wisp/
 UGLIFYJS = ./node_modules/.bin/uglifyjs
-BANNER = "/*! fw.js - v0.1.0 - MIT License - https://github.com/h2non/fw */"
+BANNER = "/*! fw.js - v0.1 - MIT License - https://github.com/h2non/fw */"
 
 define release
 	VERSION=`node -pe "require('./package.json').version"` && \
