@@ -1,11 +1,5 @@
 # fw [![Build Status](https://travis-ci.org/h2non/fw.svg?branch=master)][travis] [![NPM version](https://badge.fury.io/js/fw.svg)][npm]
 
-<table>
-<tr>
-<td><b>Stage</b></td><td>beta</td>
-</tr>
-</table>
-
 ## About
 
 **fw** is a tiny library which helps with **asynchronous

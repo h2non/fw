@@ -29,6 +29,6 @@
                   (fn [item]
                     (fn [done]
                       (lambda item done))))]
-    (series stack cb)))))
+      (series stack cb)))))
 
 (def ^void map-series each-series)

@@ -32,6 +32,6 @@
                   (fn [item]
                     (fn [done]
                       (lambda item done))))]
-    (parallel stack cb)))))
+      (parallel stack cb)))))
 
 (def ^void map each)
