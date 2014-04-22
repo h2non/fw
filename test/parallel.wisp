@@ -58,7 +58,15 @@
             (.to.be.an (expect result) :array)
             (.to.have.length (expect result) 2)
             (.to.include (expect result) 1)
-            (.to.include (expect result) 2) (done)))))))
+            (.to.include (expect result) 2) (done)))))
+    (test :empty
+      (fn [done]
+        (parallel
+          []
+          (fn [err result]
+            (.to.be.equal (expect err) nil)
+            (.to.be.an (expect result) :array)
+            (.to.have.length (expect result) 0) (done)))))))
 
 (suite :each
   (fn []
@@ -83,4 +91,13 @@
             (.to.be.an (expect result) :array)
             (.to.have.length (expect result) 3)
             (.to.include (expect result) 4)
-            (.to.include (expect result) 6) (done)))))))
+            (.to.include (expect result) 6) (done)))))
+    (test :empty
+      (fn [done]
+        (each
+          []
+          (fn [])
+          (fn [err result]
+            (.to.be.equal (expect err) nil)
+            (.to.be.an (expect result) :array)
+            (.to.have.length (expect result) 0) (done)))))))

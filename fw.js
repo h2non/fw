@@ -19,6 +19,8 @@
     var parallel = fw_lib_parallel.parallel;
     var each = fw_lib_parallel.each;
     var map = fw_lib_parallel.map;
+    var eachParallel = fw_lib_parallel.eachParallel;
+    var mapParallel = fw_lib_parallel.mapParallel;
     var fw_lib_whilst = _dereq_('./whilst');
     var whilst = fw_lib_whilst.whilst;
 }
@@ -30,6 +32,8 @@ fw.mapSeries = mapSeries;
 fw.parallel = parallel;
 fw.each = each;
 fw.map = map;
+fw.mapParallel = mapParallel;
+fw.eachParallel = eachParallel;
 fw.whilst = whilst;
 },{"./parallel":2,"./series":3,"./whilst":5}],2:[function(_dereq_,module,exports){
 {
@@ -64,7 +68,7 @@ var parallel = exports.parallel = function parallel(arr, lambda) {
             var arrø2 = arr.slice();
             var lenø1 = arrø2.length;
             var nextø1 = iterator(lambda, lenø1);
-            return arrø2.forEach(function (cur) {
+            return arrø2.length === 0 ? lambda(void 0, []) : arrø2.forEach(function (cur) {
                 return isFn(cur) ? cur(once(nextø1)) : void 0;
             });
         }.call(this) : arr;
@@ -82,6 +86,8 @@ var each = exports.each = function each(arr, lambda, cb) {
         })() : arr;
     };
 var map = exports.map = each;
+var eachParallel = exports.eachParallel = each;
+var mapParallel = exports.mapParallel = each;
 },{"./util":4}],3:[function(_dereq_,module,exports){
 {
     var _ns_ = {

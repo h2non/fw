@@ -149,7 +149,7 @@ fw.whilst(
 ```
 
 ### each(arr, iterator, callback)
-**Alias**: `map`
+**Alias**: `map, eachParallel, mapParallel`
 
 Applies the function iterator to each item in arr, in parallel.
 The iterator is called with an item from the list, and a callback for when it has finished

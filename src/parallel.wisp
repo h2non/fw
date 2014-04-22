@@ -19,9 +19,11 @@
     (let [arr (c-> arr)
           len (l? arr)
           next (iterator lambda len)]
-      (each arr (fn [cur]
-        (cond (fn? cur)
-          (cur (once next))))))))
+      (if (? (l? arr) 0)
+        (lambda nil [])
+        (each arr (fn [cur]
+          (cond (fn? cur)
+            (cur (once next)))))))))
 
 (defn ^void each
   "Applies the function iterator to each
@@ -35,3 +37,5 @@
       (parallel stack cb)))))
 
 (def ^void map each)
+(def ^void each-parallel each)
+(def ^void map-parallel each)

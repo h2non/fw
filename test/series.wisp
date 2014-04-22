@@ -36,7 +36,15 @@
             (fn [next] (delay (fn [] (next 2)))) ]
           (fn [err result]
             (.to.be.equal (expect err) :error)
-            (.to.be.deep.equal (expect result) [1 1]) (done)))))))
+            (.to.be.deep.equal (expect result) [1 1]) (done)))))
+    (test :empty
+      (fn [done]
+        (series
+          []
+          (fn [err result]
+            (.to.be.equal (expect err) nil)
+            (.to.be.an (expect result) :array)
+            (.to.have.length (expect result) 0) (done)))))))
 
 (suite :eachSeries
   (fn []
@@ -60,4 +68,13 @@
             (.to.be.equal (expect err) :error)
             (.to.be.an (expect result) :array)
             (.to.have.length (expect result) 1)
-            (.to.include (expect result) 2) (done)))))))
+            (.to.include (expect result) 2) (done)))))
+    (test :empty
+      (fn [done]
+        (each-series
+          []
+          (fn [])
+          (fn [err result]
+            (.to.be.equal (expect err) nil)
+            (.to.be.an (expect result) :array)
+            (.to.have.length (expect result) 0) (done)))))))
