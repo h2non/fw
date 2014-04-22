@@ -20,7 +20,8 @@
           len (l? arr)
           next (iterator lambda len)]
       (if (? (l? arr) 0)
-        (lambda nil [])
+        (cond
+          (fn? lambda) (lambda nil []))
         (each arr (fn [cur]
           (cond (fn? cur)
             (cur (once next)))))))))

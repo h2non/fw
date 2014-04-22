@@ -68,7 +68,7 @@ var parallel = exports.parallel = function parallel(arr, lambda) {
             var arrø2 = arr.slice();
             var lenø1 = arrø2.length;
             var nextø1 = iterator(lambda, lenø1);
-            return arrø2.length === 0 ? lambda(void 0, []) : arrø2.forEach(function (cur) {
+            return arrø2.length === 0 ? isFn(lambda) ? lambda(void 0, []) : void 0 : arrø2.forEach(function (cur) {
                 return isFn(cur) ? cur(once(nextø1)) : void 0;
             });
         }.call(this) : arr;
