@@ -6,12 +6,6 @@
             doc: void 0
         };
 }
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
 {
     var _ns_ = {
             id: 'fw.lib.fw',
@@ -29,7 +23,7 @@ void 0;
     var whilst = fw_lib_whilst.whilst;
 }
 var fw = exports;
-fw.VERSION = '0.1.0';
+fw.VERSION = '0.1.2';
 fw.series = series;
 fw.eachSeries = eachSeries;
 fw.mapSeries = mapSeries;
@@ -44,12 +38,6 @@ fw.whilst = whilst;
             doc: void 0
         };
 }
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
 {
     var _ns_ = {
             id: 'fw.lib.parallel',
@@ -101,12 +89,6 @@ var map = exports.map = each;
             doc: void 0
         };
 }
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
 {
     var _ns_ = {
             id: 'fw.lib.series',
@@ -160,12 +142,6 @@ var mapSeries = exports.mapSeries = eachSeries;
             doc: void 0
         };
 }
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
 {
     var _ns_ = {
             id: 'fw.lib.util',
@@ -205,12 +181,6 @@ var once = exports.once = function once(lambda) {
             doc: void 0
         };
 }
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
-void 0;
 {
     var _ns_ = {
             id: 'fw.lib.whilst',

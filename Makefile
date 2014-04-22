@@ -22,10 +22,23 @@ define release
 	git tag "$$NEXT_VERSION" -m "Version $$NEXT_VERSION"
 endef
 
+define replace
+	node -e "\
+		var fs = require('fs'); \
+		var os = require('os-shim'); \
+		var str = fs.readFileSync('./fw.js').toString(); \
+		str = str.split(os.EOL).map(function (line) { \
+		  return line.replace(/^void 0;/, '') \
+		}).filter(function (line) { \
+		  return line.length \
+		}).join(os.EOL); \
+		fs.writeFileSync('./fw.js', str)"
+endef
+
 default: all
 all: test
 test: compile mocha
-browser: cleanbrowser test banner browserify uglify
+browser: cleanbrowser test banner browserify replace uglify
 
 mkdir:
 	mkdir -p lib
@@ -54,6 +67,9 @@ browserify:
 		--exports require \
 		--standalone fw \
 		--entry ./lib/fw.js >> ./fw.js
+
+replace:
+	@$(call replace)
 
 uglify:
 	$(UGLIFYJS) fw.js --mangle --preamble $(BANNER) > fw.min.js
