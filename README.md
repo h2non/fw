@@ -1,12 +1,7 @@
-# fw [![Build Status](https://travis-ci.org/h2non/fw.svg?branch=master)][travis] [![NPM version](https://badge.fury.io/js/fw.svg)][npm]
+# fw [![Build Status](https://travis-ci.org/h2non/fw.svg?branch=master)][travis] [![NPM version](https://badge.fury.io/js/fw.svg)][npm] ![Total Downloads](https://img.shields.io/npm/dt/fw.svg)
 
-## About
-
-**fw** is a tiny library which helps with **asynchronous
-control-flow management** in JavaScript environments
-
-It exploits **functional-style programming** using higher-order functions and other common patterns.
-You could use it in conjunction with [hu][hu], for a better approach
+**fw** is a tiny library to deal with **asynchronous
+control-flow** easily in JavaScript. Designed to be embedded in other libraries or apps.
 
 ## Features
 
